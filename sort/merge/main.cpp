@@ -4,15 +4,15 @@
 using namespace std;
 
 template<typename T>
-void merge_sort(vector<T>& vec, size_t first, size_t last) {
+void merge_sort(vector<T>& vec, long long first, long long last) {
     //O(n log n)
     if (first != last) { // Если в массиве больше 1 элемента, то их нужно отсортировать
-        size_t middle = (first + last) / 2;
+        long long middle = (first + last) / 2;
         merge_sort(vec, first, middle);
         merge_sort(vec, middle + 1, last);
 
-        size_t left_i = first;
-        size_t right_i = middle + 1;
+        long long left_i = first;
+        long long right_i = middle + 1;
 
         vector<T> sorted = {}; // Отсортированный массив
         while ((left_i != middle + 1) && (right_i != last + 1)) { // Обрабатываем оба подмассива, пока какой-то из них не станет пустым
@@ -26,16 +26,16 @@ void merge_sort(vector<T>& vec, size_t first, size_t last) {
             }
         }
         if (left_i != middle + 1) { // Если левый не пуст, то записываем его
-            for (size_t i = left_i; i < middle + 1; i++) {
+            for (long long i = left_i; i < middle + 1; i++) {
                 sorted.push_back(vec[i]);
             }
         }
         else if (right_i != last + 1) { // Если правый не пуст, то записываем его
-            for (size_t i = right_i; i < last + 1; i++) {
+            for (long long i = right_i; i < last + 1; i++) {
                 sorted.push_back(vec[i]);
             }
         }
-        for (size_t i = first; i < to + 1; i++) {
+        for (long long i = first; i < last + 1; i++) {
             vec[i] = sorted[i - first];
         }
     }
